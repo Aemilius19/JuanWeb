@@ -1,0 +1,44 @@
+﻿@using JuanWeb.ViewModel
+@model HomeVM
+@{
+    int count = 0;
+}
+<div class="container">
+    <table>
+    <tr>
+        <td class="col"><h2>Products</h2></td>
+         <td><a class="col col-auto btn btn-primary" asp-action="Create">Create</a></td>
+        </tr>
+</table>
+</div>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Img</th>
+                <th scope="col">Buttons</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Products)
+            {
+                count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.Description</td> 
+                <td>@item.ImgUrl</td>
+                <td>
+                        <a class="btn btn-warning" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+                    </td>
+            </tr>               
+            }
+        </tbody>
+    </table>
+</div>
